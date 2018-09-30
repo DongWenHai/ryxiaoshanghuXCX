@@ -1,0 +1,93 @@
+<!-- 导航栏 -->
+<header title="我的订单" show_back="true"></header>
+<!-- ==========正常文档流=========== -->
+<view style="padding-top:{{headerHeight}}px;">
+  <refresh-view id='refreshView' backgroundColor="rgba(255,147,50,.4)" bind:onRefresh="onPullDownRefresh"   bind:onPullState="_pullState" />
+  <view class="container" bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' bindtouchcancel='handletouchcancel'>
+    <view class="order-item" wx:for="{{orderUnDoneList}}" wx:key="{{oIndex}}" wx:for-index="oIndex" wx:for-item="oItem">
+      <!-- 订单状态 -->
+      <view class="order-status">
+        <view class="">下单时间：{{oItem.addtime}}</view>
+        <view>
+          <block wx:if="{{oItem.order_status == 1}}">
+            待付款
+          </block>
+          <block wx:if="{{oItem.order_status == 3}}">
+            待收货
+          </block>
+        </view>
+      </view>
+      <!-- 订单产品 -->
+      <navigator class="weui-cells" hover-class='none' style="margin-top:0;" url="/pages/orderDetail/orderDetail?orderid={{oItem.id}}">
+        <view class="weui-cell" wx:for="{{oItem.order_product}}" wx:key="{{pIndex}}" wx:for-index="pIndex" wx:for-item="pItem">
+          <view class="weui-cell__hd">
+            <view class="o-img"><image src="{{pItem.product_img}}"></image></view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="o-name">{{pItem.product_name}}</view>
+            <view class="o-attr">规格：{{pItem.product_attr_name}}</view>
+          </view>
+          <view class="weui-cell__ft">
+            <view class="o-price">￥{{pItem.product_price}}</view>
+            <view>×{{pItem.product_count}}</view>
+          </view>
+        </view>
+      </navigator>
+      <!-- 订单合计 -->
+      <view class="order-status">
+        <view>合计总价：￥<text style="font-weight:bold;font-size:36rpx;color:#333;">{{oItem.total_money}}</text></view>
+        <block wx:if="{{oItem.order_status == 1}}">
+          <button size="mini" class="paybtn" data-orderid="{{oItem.orderid}}" bindtap="payOrder">去付款</button>
+        </block>
+        <block wx:if="{{oItem.order_status == 3}}">
+          <button size="mini" class="paybtn" data-orderid="{{oItem.orderid}}" bindtap="confirmAccept">确认收货</button>
+        </block>
+      </view>
+    </view>
+
+    <!-- 历史订单 -->
+    <view class="order-title" wx:if="{{orderList.length>0}}">历史订单</view>
+
+    <!-- 已完成订单 -->
+    <view class="order-item" wx:for="{{orderList}}" wx:key="{{oIndex}}" wx:for-item="oItem" wx:for-index="oIndex">
+      <!-- 订单状态 -->
+      <view class="order-status">
+        <view class="">下单时间：{{oItem.addtime}}</view>
+        <block wx:if="{{oItem.order_status == 0}}">
+          已取消
+        </block>
+        <block wx:if="{{oItem.order_status == 6}}">
+          已完成
+        </block>
+      </view>
+      <!-- 订单产品 -->
+      <view class="weui-cells" style="margin-top:0;">
+        <view class="weui-cell" wx:for="{{oItem.order_product}}" wx:key="{{pIndex}}" wx:for-item="pItem" wx:for-index="pIndex">
+          <view class="weui-cell__hd">
+            <view class="o-img"><image src="{{pItem.product_img}}"></image></view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="o-name">{{pItem.product_name}}</view>
+            <view class="o-attr">规格：{{pItem.product_attr_name}}</view>
+          </view>
+          <view class="weui-cell__ft">
+            <view class="o-price">￥{{pItem.product_price}}</view>
+            <view>×{{pItem.product_count}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 订单合计 -->
+      <view class="order-status">
+        <view>合计总价：￥<text style="font-weight:bold;font-size:36rpx;color:#333;">{{oItem.total_money}}</text></view>
+        <button size="mini" class="deletebtn" data-index="{{oIndex}}" data-orderid="{{oItem.orderid}}" bindtap="deleteOrder">删除</button>
+      </view>
+    </view>
+
+    <!-- 没有订单时 -->
+    <view class="noorder" wx:if="{{orderUnDoneList.length==0&&orderList.length==0}}">
+      <image src="/images/nodata/order.png"></image>
+      <view>暂无订单</view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,5 @@
+<view class="c-title">
+  <view class="c-title-bar" style="background:{{color}}"></view>
+  <view class="c-title-content" style="color:{{color}}">{{title}}</view>
+  <view class="c-title-bar" style="background:{{color}}"></view>
+</view>

@@ -1,0 +1,105 @@
+<!-- 导航栏 -->
+<header title="星星奶茶店" bindnavgatorUser="navgatorUser"></header>
+<!-- 顶部背景 -->
+<view class="c-bg"></view>
+<!-- ==========正常文档流=========== -->
+<view style="padding-top:{{headerHeight}}px;">
+  <refresh-view id='refreshView' backgroundColor="rgba(255,147,50,.4)" bind:onRefresh="onPullDownRefresh"   bind:onPullState="_pullState" />
+  <view class="container" bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' bindtouchcancel='handletouchcancel'>
+    <!-- 搜索模拟框 -->
+    <view class="index-search">
+      <navigator class="index-search-box" url="/pages/search/search">
+        <view class="index-search-icon"><image src="/images/icons/search.png"></image></view>
+        <view style="color:#fff;font-size:30rpx;">小店搜索</view>
+      </navigator>
+    </view>
+    <!-- 产品列表面板 -->
+    <swiper indicator-dots="true" style="height:1020rpx;" circular="true" indicator-active-color="#FF9300">
+      <block wx:for="{{productsListData}}" wx:key="{{cIndex}}" wx:for-item="cItem" wx:for-index="cIndex">
+      <swiper-item>
+        <view class="c-item">
+          <view class="c-title">{{cItem.category_name}}</view>
+          <scroll-view scroll-y class="c-container">
+
+            <block wx:for="{{cItem.data}}" wx:key="pIndex" wx:for-item="pItem" wx:for-index="pIndex">
+            <view class="p-item" hover-class='hover' data-id="{{pItem.product_id}}" bindtap="showAttrModel">
+              <view class="p-img"><image mode="widthFix" src="{{pItem.product_img}}"></image></view>
+              <view class="p-name omit">{{pItem.product_name}}</view>
+              <view class="p-price">￥{{pItem.product_price}}</view>
+            </view>
+            </block>
+
+          </scroll-view>
+          <view class="b-line"></view>
+        </view>
+      </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- 店铺信息 -->
+    <view class="store-info">
+      <title title="{{storeInfo.store_name}}" color="#c8c8c8"></title>
+      <view class="store-address">{{storeInfo.store_address}}</view>
+      <view class="store-phone">{{storeInfo.store_phone}}</view>
+    </view>
+
+    <!-- 产品属性选择弹窗 -->
+    <block wx:if="{{showAttrModel}}">
+    <view class="modelbox" animation="{{modelAnimation}}" style="opacity:0;">
+      <view class="mask" bindtap='closeAttrModel'></view>
+      <view class="modelbox-container">
+        <!-- 关闭模态框 -->
+        <view class="close-model" bindtap='closeAttrModel'><icon type='clear'></icon></view>
+
+        <view id="pImg" class="model-p-image"><image mode="widthFix" src="{{productData.product_source_img?productData.product_source_img:''}}"></image></view>
+        <view class="model-p-name">{{productData.product_name}}</view>
+        <view class="model-p-price">￥{{price}}</view>
+        <!-- 数量控制 -->
+        <view class="model-p-count">
+          <view class="mode-control m-reduce" bindtap="reduceCount"></view>
+          <view class="mode-control m-count">{{count}}</view>
+          <view class="mode-control m-plus" bindtap="addCount"></view>
+        </view>
+        <!-- 属性 -->
+        <scroll-view scroll-y class="model-attr-box">
+          <block wx:for="{{attrData}}" wx:key="{{kIndex}}" wx:for-index="kIndex" wx:for-item="kItem">
+          <view class="model-attr-item">
+            <view class="model-attr-title">{{kItem.attrKey}}</view>
+            <view class="weui-flex" style="flex-wrap:wrap;">
+              <block wx:for="{{kItem.attrValue}}" wx:key="{{vIndex}}" wx:for-index="vIndex" wx:for-item="vItem">
+              <view class="weui-flex__item" style="padding:10rpx;min-width:25%;box-sizing:border-box;"><view class="model-attr-name {{kItem.attrControl[vIndex]?(kItem.attrStatus[vIndex]?'attr-selected':''):'attr_value_disabled'}}" data-attr_value="{{vItem}}" data-attr_id="{{kItem.attrId[vIndex]}}" data-kindex="{{kIndex}}" data-vindex="{{vIndex}}" data-attr_status="{{kItem.attrStatus[vIndex]}}" bindtap="selectAttr">{{vItem}}</view></view>
+              </block>
+            </view>
+          </view>
+          </block>
+        </scroll-view>
+        <!-- 操作 -->
+        <view class="model-controller">
+          <view class="model-add" hover-class='hover' data-pid="{{productData.product_id}}" bindtap="addCart">加入购物车</view>
+          <view class="model-shop" hover-class='hover' data-pid="{{productData.product_id}}" bindtap="shop">立即购买</view>
+        </view>
+      </view>
+    </view>
+    </block>
+
+  </view>
+  
+</view>
+<movable-area class="movearea">
+  <movable-view class="car" direction="all" x="{{carX}}" y="{{carY}}" damping="50" bindtap="navigatorToCar" bindchange="moveCar">
+    <image src="/images/icons/car.png"></image>
+    <view wx:if="{{cartNum>0?true:false}}" class="car-num" animation="{{carAnimation}}">{{cartNum}}</view>
+  </movable-view>
+</movable-area>
+
+
+<block wx:if="{{showUpdateUserinfo}}">
+<login bindupdateUserInfoSuccess="updateUserInfoSuccess" bindcancleUpdateUserinfo="cancleUpdateUserinfo">
+  <view slot="title">登录提醒</view>
+  <view slot="msg">请授权登录，否则部分功能将无法使用</view>
+</login>
+</block>
+
+<view class="good_box" hidden="{{hide_good_box}}"  style="left: {{bus_x}}px; top: {{bus_y}}px;">
+  <image src="{{productData.product_source_img?productData.product_source_img:''}}"></image>
+</view>

@@ -1,0 +1,56 @@
+<!-- 导航栏 -->
+<header title="个人中心" show_back="true"></header>
+<!-- ==========正常文档流=========== -->
+<view style="padding-top:{{headerHeight}}px;">
+  <block wx:if="{{storeInfo.is_dispatch == 0 || storeInfo.is_dispatch == 2}}">
+
+    <view class="weui-cell bg_white" wx:if="{{storeInfo.is_dispatch == 0}}">
+      <view class="weui-cell__bd">无需配送</view>
+      <view class="weui-cell__ft"><switch bindchange="switchShip"/></view>
+    </view>
+
+    <block wx:if="{{defaultAddress&&need_ship}}">
+    <navigator class="s-address" url="/pages/address/address?from=2">
+      <view class="flex-box"><view class="s-type">商家配送</view></view>
+      <view class="s-info">
+        <view class="address-icon"><image src="/images/icons/address.png"></image></view>
+        <view class="address-info">
+          <view class="address-detail">{{defaultAddress.provice_name}}{{defaultAddress.city_name}}{{defaultAddress.area_name}}{{defaultAddress.address_details}}</view>
+          <view class="address-user">{{defaultAddress.shop_name}} {{defaultAddress.shop_phone}}</view>
+        </view>
+        <view class="nav-arrow"></view>
+      </view>
+    </navigator>
+    </block>
+    <block wx:if="{{!defaultAddress&&need_ship}}">
+      <navigator class="weui-cell weui-cell_access bg_white" url="/pages/addAddress/addAddress?from=1">
+        <view class="weui-cell__hd"><icon type="warn" size="20" style="margin-right:20rpx;"></icon></view>
+        <view class="weui-cell__bd lh25">还没有地址，立即添加</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </block>
+  </block>
+
+  <view class="weui-cells noborder">
+    <block wx:for="{{settlementInfo.cart}}" wx:key="{{index}}">
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="o-img"><image src="{{item.product_img}}"></image></view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class="o-name">{{item.product_name}}</view>
+          <view class="o-attr">规格：{{item.attr_name?item.attr_name:'暂无规格'}}</view>
+        </view>
+        <view class="weui-cell__ft">
+          <view class="o-price">￥{{item.attr_change_price}}</view>
+          <view>×{{item.product_count}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="car-tabbar">
+    <view class="car-total">共计应付:<text style="font-weight:bold;">￥{{settlementInfo.total_money}}元</text></view>
+    <view class="settlement" bindtap="payOrder">立即支付</view>
+  </view>
+</view>

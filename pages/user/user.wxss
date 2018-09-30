@@ -1,0 +1,56 @@
+page{
+  background:#f8f8f8;
+}
+.user-nickname{
+  font-size:38rpx;
+  font-weight:bold;
+  padding-bottom:10rpx;
+}
+.user-photo{
+  width:140rpx;
+  height:140rpx;
+  border-radius:50%;
+  overflow: hidden;
+  border:1px solid #999;
+  margin-right:20rpx;
+}
+.order-name{
+  font-size:32rpx;
+  font-weight:bold;
+}
+.order-photo{
+  display:inline-block;
+  width:140rpx;
+  height:140rpx;
+  border-radius:50%;
+  overflow: hidden;
+  border:6px solid #fff;
+  margin-right:20rpx;
+  box-sizing: border-box;
+  position:absolute;
+  background:#f3f3f3;
+}
+.order-photo-box{
+  width:250rpx;
+  height:140rpx;
+  position:relative;
+}
+.pto2{
+  top:0;
+  left:0;
+}
+.pto1{
+  top:0;
+  right:0;
+}
+.mypoint{
+  color:#FF9300;
+}
+.cl_b6{color:#666;}
+.store-info{padding-bottom:10px;position:fixed;bottom:0;left:0;width:100%;}
+.store-address,.store-phone{
+  text-align: center;
+  color:#c8c8c8;
+  line-height:28px;
+  font-size:24rpx;
+}

@@ -1,0 +1,114 @@
+<!-- 导航栏 -->
+<header title="我的订单" show_back="true"></header>
+<!-- ==========正常文档流=========== -->
+<view style="padding-top:{{headerHeight}}px;">
+
+  <view class="orderDetail">
+
+    <view class="productInfo">
+      <view class="order-store-logo">
+        <image mode='widthFix' src="{{orderData[0].product_img}}"></image>
+      </view>
+      <view class="orderDetail-status">
+      <block wx:if="{{order.order_status == -1}}">退款</block>
+      <block wx:if="{{order.order_status == 0}}">订单取消</block>
+      <block wx:if="{{order.order_status == 1}}">待支付</block>
+      <block wx:if="{{order.order_status == 3}}">待发货</block>
+      <block wx:if="{{order.order_status == 4}}">待收货</block>
+      <block wx:if="{{order.order_status == 5}}">待评价</block>
+      <block wx:if="{{order.order_status == 6}}">已完成</block>
+      </view>
+      <view class="btn-container">
+        <block wx:if="{{order.order_status == -1 || order.order_status == 0 || order.order_status == 5 || order.order_status == 6}}"><view class="orderDetail-btn" data-orderid="{{order.orderid}}" bindtap="deleteOrder">删除订单</view></block>
+        <block wx:if="{{order.order_status == 1}}"><view class="orderDetail-btn" data-orderid="{{order.orderid}}" bindtap='payOrder'>立即支付</view><view class="ordercancle-btn" data-orderid="{{order.orderid}}" bindtap="cancleOrder">取消订单</view></block>
+        <block wx:if="{{order.order_status == 4}}"><view class="orderDetail-btn" data-orderid="{{order.orderid}}" bindtap="confirmAccept">确认收货</view></block>
+        <!-- <block wx:if="{{order.order_status == 5}}"><navigator class="orderDetail-btn" url="/pages/mine/comments/comments?orderId={{order.orderid}}&autoid={{order.pt_order_auto_id}}">去评价</navigator></block> -->
+        <!-- <block wx:if="{{order.order_status == 6}}"><view class="orderDetail-btn">再来一单</view></block> -->
+      </view>
+
+      <view class="l_line"></view>
+
+      <view class="orderDetail-products">
+        <view class="order-list">
+          <block wx:for="{{orderData}}" wx:key="{{index}}">
+          <view class="pv clearfix bt1">
+            <view class="fl">{{item.product_name}}</view>
+            <view class="fr order-list-price">￥{{item.product_price}}</view>
+            <view class="fr order-list-count">×{{item.product_count}}</view>
+          </view>
+          </block>
+
+          <!-- <view class="pv clearfix bt1">
+            <view class="fl">餐盒费</view>
+            <view class="fr order-list-price">￥0</view>
+          </view> -->
+          <view class="pv clearfix bt1">
+            <view class="fl">配送费</view>
+            <view class="fr order-list-price">￥{{order.ship_fee}}</view>
+          </view>
+          <!-- <view class="pv clearfix bt1">
+            <view class="fl">在线支付立减优惠</view>
+            <view class="fr order-list-price clr">-￥0</view>
+          </view> -->
+        
+        </view>
+        <view class="pv clearfix">
+          <view class="fr">实付 <text class="r_fz36">￥{{order.total_money}}</text></view>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="shipInfo" wx:if="{{order.is_ship==1}}">
+
+      <view class="pcell">配送信息</view>
+      <!-- <view class="weui-cell">
+        <view class="weui-cell__hd">送达时间：</view>
+        <view class="weui-cell__bd">尽快送达</view>
+      </view> -->
+      <view class="weui-cell">
+        <view class="weui-cell__hd"><view>送货地址：</view></view>
+        <view class="weui-cell__bd">
+          <view>{{order.ship_name}}(先生/女士)</view>
+          <view>{{order.ship_phone}}</view>
+          <view class="">{{order.ship_province}}{{order.ship_city}}{{order.ship_area}}{{order.ship_address}}</view>
+        </view>
+      </view>
+      <!-- <view class="weui-cell">
+        <view class="weui-cell__hd">配送公司：</view>
+        <view class="weui-cell__bd">蜂鸟快送</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">配送骑手：</view>
+        <view class="weui-cell__bd">刘一峰， 18689773769</view>
+      </view> -->
+
+
+    </view>
+
+
+    <view class="shipInfo">
+
+      <view class="pcell">订单信息</view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">订单号：</view>
+        <view class="weui-cell__bd">{{order.orderid}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">支付方式：</view>
+        <view class="weui-cell__bd">在线支付</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">下单时间：</view>
+        <view class="weui-cell__bd">{{order.addtime}}</view>
+      </view>
+
+
+    </view>
+
+
+
+  </view>
+
+
+</view>

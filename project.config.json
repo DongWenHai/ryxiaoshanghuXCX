@@ -1,0 +1,92 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wxcff06cc8fcdecaf3",
+	"projectname": "%E5%B0%8F%E5%95%86%E6%88%B7(%E5%A5%B6%E8%8C%B6%E5%BA%97)1",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": -1,
+					"name": "user",
+					"pathName": "pages/user/user",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "address",
+					"pathName": "pages/address/address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "car",
+					"pathName": "pages/car/car",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "settlement",
+					"pathName": "pages/settlement/settlement",
+					"query": "sid=8d95ce178f3a1db5b0093fde8fbacb65"
+				},
+				{
+					"id": 5,
+					"name": "payresult",
+					"pathName": "pages/payresult/payresult",
+					"query": "status=success&code=4545"
+				},
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "common",
+					"pathName": "pages/common/common",
+					"query": ""
+				}
+			]
+		}
+	}
+}

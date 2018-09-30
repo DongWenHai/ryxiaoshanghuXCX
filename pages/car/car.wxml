@@ -1,0 +1,57 @@
+<!-- 导航栏 -->
+<header title="购物车" show_back="true"></header>
+<!-- ==========正常文档流=========== -->
+<view style="padding-top:{{headerHeight}}px;padding-bottom:50px;">
+
+  <!-- 空购物车 -->
+  <view class="nocart" wx:if="{{cartData.length <= 0}}">
+    <view class="nocart-icon">
+      <image src="/images/nodata/nocart.png"></image>
+    </view>
+    <view class="nocart-tip">啥也没有，去加点什么吧</view>
+  </view>
+
+  <view class="weui-cells" style="margin-top:0;" wx:if="{{cartData.length > 0}}">
+    <!-- <block wx:for="{{cartData}}" wx:key="{{index}}">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <view class="car-img"><image mode="widthFix" lazy-load='true' src="{{item.product_img}}"></image></view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="car-name"><view class="c-name tlie">{{item.product_name}}</view><view class="c-price">￥{{item.attr_change_price}}</view></view>
+        <view class="car-attr">规格：{{item.attr_name}}</view>
+        <view class="car-control">
+          <view class="mode-control m-reduce" data-id="{{item.id}}" bindtap="reduceCount"></view>
+          <view class="mode-control m-count">{{item.product_count}}</view>
+          <view class="mode-control m-plus" data-id="{{item.id}}" bindtap="addCount"></view>
+        </view>
+      </view>
+    </view>
+    </block> -->
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{cartData}}" wx:key="">
+      <view class="content" style="padding:0;">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="car-img"><image mode="widthFix" lazy-load='true' src="{{item.product_img}}"></image></view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="car-name"><view class="c-name tlie">{{item.product_name}}</view><view class="c-price">￥{{item.attr_change_price}}</view></view>
+            <view class="car-attr">规格：{{item.attr_name}}</view>
+            <view class="car-control">
+              <view class="mode-control m-reduce" data-id="{{item.id}}" bindtap="reduceCount"></view>
+              <view class="mode-control m-count">{{item.product_count}}</view>
+              <view class="mode-control m-plus" data-id="{{item.id}}" bindtap="addCount"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="del" catchtap="del" data-id="{{item.id}}">删除</view>
+    </view>
+  </view>
+
+  <!-- 底部tabbar -->
+  <view class="car-tabbar">
+    <view class="car-total">合计:<text style="font-weight:bold;">￥{{totalMoney}}元</text></view>
+    <view class="settlement {{totalMoney>0?'':'disabledTarget'}}" bindtap="settlement">结算</view>
+  </view>
+</view>

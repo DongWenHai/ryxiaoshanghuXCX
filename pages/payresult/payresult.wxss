@@ -1,0 +1,23 @@
+.pay-result{
+  text-align: center;
+}
+.pr-icon{
+  display:inline-block;
+  padding-top:30px;
+}
+.pr-status{
+  font-weight:bold;
+  font-size:42rpx;
+  color:#555;
+}
+.pr-code{
+  color:#999;
+  line-height:44px;
+}
+.pr-tips{
+  height:44px;
+  background:#F8F8F8;
+  padding:0 15px;
+  line-height:44px;
+}
+.btn-box{width:100%;padding:10px 15px;box-sizing: border-box;margin-top:50px;}

@@ -1,0 +1,173 @@
+
+@import '/assets/wxss/weui.wxss';
+
+page{
+  background:#fff;
+  font-size:32rpx;
+  color:#333;
+  font-family: 'PingFang SC','PingFang','Microsoft YaHei';
+}
+image{width:100%;}
+.main_color{color:#FF9300;}
+.bg_white{background:#fff;}
+.c-bg{
+  width:100%;
+  height:360rpx;
+  background:#FF9300;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+  border-radius:0 0 60rpx 60rpx;
+}
+
+.omit {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+	
+}
+.tlie{
+	  overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;	
+}
+.hover{
+  background:rgba(0,0,0,0.1);
+  opacity: 0.7;
+}
+.modelbox{
+  width:100%;
+  height:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:99;
+}
+.mask{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  background:rgba(0,0,0,0.7);
+}
+
+
+.mode-control{
+  display:inline-block;
+  min-width:50rpx;
+  height:50rpx;
+  line-height:50rpx;
+  text-align: center;
+}
+.m-reduce{
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABCElEQVRoQ+2VvQrCMBRGE0q7iqPg6OJQhzyKgk+pvkm6BJzqJK5KXQutdBD8qS4nKsLXtdxzm3MCtebPH/vn3290gF8XVAEVgAZ0haBAPK4CWCEEqAAUiMdVACuEABWAAvG4CmCFEKACUCAe7y3gnJs0TTPG9IiAJEn23vvdI/LpAM65tbV2HnF3NFTbtpuiKBa3wLsD5Hk+zLLsGG3jB0BVVQ3Ksjxf0X0Fttba6Qd2x0AG7/3sZYHuRVchTdOlMWYUY2NExqGu61UI4fT2ABEXfgWl/8BXNL9ZogIqAA3oCkGBeFwFsEIIUAEoEI+rAFYIASoABeJxFcAKIUAFoEA8rgJYIQRcAFXgJjGJOU8DAAAAAElFTkSuQmCC);
+  background-size:36rpx 36rpx;
+  background-repeat: no-repeat;
+  background-position:center;
+}
+.m-plus{
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABU0lEQVRoQ+2Zu0oDQRSGvwOBkE6wcCvFl/IVrLJoCisjWiiIICGL7xcbMRDrBAkcyRhFJZez2R3IxLPtnoH/Nv/OsELijySOHyewykHtcTB7L2cMYzkdzQHtcwncBODClbS5jUEiJoFnhMMAWhlIznFqBCYIzTnoibRpOYEFCsSMkDtgiZw7sEwl7eMR8ghZFPAIVVEpnFIiPb6JjcK6A76JjVFZNrZ7EdKCc+ACyCqJo7V33CvKveT0fuL65YA+0qLBG1LD5aN+ArOb3ZiMPTnh/YtEegSm7EuH8UIC4fq6vRF6QXlYGaFKmf+z2L/ERjV3r0aNxNeOeYTWSvQ54BHyw5wxKv/nMFdRkO/l3kJGJb2FvIWMUfEWKitU+i1UMACOAvEkf/IVdFGu5851JeeurIuW+Wg1GoR/IqPBVE4ZWcBsMhOVwCaAyq5xAmUVq3v+AwewtzFXKjk+AAAAAElFTkSuQmCC);
+  background-size:36rpx 36rpx;
+  background-repeat: no-repeat;
+  background-position:center;
+}
+.m-count{
+  font-size:36rpx;
+}
+
+.modelConfirm{
+  float:right;
+  color:#1AAD19;
+  font-size:30rpx;
+  line-height:64rpx;
+  padding:0 20rpx;
+  border-radius:8rpx;
+}
+.modelConfirm:active{
+  background:rgba(0,0,0,.1);
+}
+button.modelConfirm{
+  background:#fff;
+}
+button.modelConfirm::after{
+  border:none;
+}
+
+/* 滑动列表样式 */
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f8f8f8;
+  width: 100%;
+  overflow: hidden;
+  background:#fff;
+}
+
+.content {
+  width: 100%;
+  padding: 10px;
+  line-height: 22px;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  margin-left: -90px;
+}
+
+.del {
+  background-color: orangered;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .content, .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.weui-btn {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 14px;
+    padding-right: 14px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    line-height: 2.55555556;
+    border-radius: 5px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
+.weui-btn:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}

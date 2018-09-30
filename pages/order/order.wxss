@@ -1,0 +1,67 @@
+page{
+  background:#f8f8f8;
+  position:relative;
+}
+.order-item{
+  margin-bottom:20rpx;
+  background:#fff;
+}
+.order-status{
+  padding:20rpx 30rpx;
+  display:-webkit-flex;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:30rpx;
+  color:#999;
+}
+.o-img{
+  width:120rpx;
+  height:120rpx;
+  border-radius:4px;
+  border:1px solid #ccc;
+  margin-right:20rpx;
+}
+.o-img>image{
+  width:120rpx;
+  height:120rpx;
+}
+.o-name,.o-price{
+  padding-bottom:16rpx;
+}
+.o-attr{
+  color:#999;
+  font-size:30rpx;
+}
+.paybtn{
+  margin:0;
+  background:#FF9300;
+  color:#fff;
+  border:1px solid #FF9300;
+  outline: none;
+}
+.deletebtn{
+  margin:0;
+  background:#fff;
+  color:#FF9300;
+  border:1px solid #FF9300;
+  outline: none;
+}
+.paybtn:after,.deletebtn:after{
+  border:none;
+}
+.order-title{
+  padding:20rpx 30rpx;
+  line-height:44px;
+}
+.noorder>image{
+  width:240rpx;
+  height:204rpx;
+  display:block;
+  margin:100px auto 0;
+}
+.noorder>view{
+  text-align: center;
+  color:#ccc;
+  font-size:30rpx;
+}

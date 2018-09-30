@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/user/user",
+    "pages/address/address",
+    "pages/order/order",
+    "pages/search/search",
+    "pages/car/car",
+    "pages/settlement/settlement",
+    "pages/payresult/payresult",
+    "pages/addAddress/addAddress",
+    "pages/editAddress/editAddress",
+    "pages/settlementSub/settlementSub",
+    "pages/orderDetail/orderDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationStyle": "custom"
+  }
+}

@@ -1,0 +1,44 @@
+<!-- 导航栏 -->
+<header title="收货地址" show_back="true"></header>
+<!-- ==========正常文档流=========== -->
+<view style="padding-top:{{headerHeight}}px;background:#f8f8f8;padding-bottom:50px;min-height:100%;box-sizing:border-box;">
+
+  <!-- <view class="weui-cells" style="margin-top:0;">
+    <block wx:for="{{addressData}}" wx:key="{{index}}">
+    <view class="weui-cell" data-id="{{item.id}}" bindtap='selectAddressToOrder'>
+      <view class="weui-cell__bd">
+        <view class="address">{{item.provice_name}}{{item.city_name}}{{item.area_name}}{{item.address_details}}</view>
+        <view class="address-user"><text>{{item.shop_name}}</text> <text>{{item.shop_phone}}</text></view>
+      </view>
+      <view class="weui-cell__ft"><view style="color:#ccc;padding-left:20rpx;" data-id="{{item.id}}" catchtap="editAddress">编辑</view></view>
+    </view>
+    </block>
+  </view> -->
+  <view class="noaddress" wx:if="{{addressData.length==0}}">
+    <image src="/images/nodata/address.png"></image>
+    <view>暂无地址</view>
+  </view>
+
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{addressData}}" wx:key="">
+
+    <view class="content">
+      <view class="weui-cell" data-id="{{item.id}}" bindtap='selectAddressToOrder'>
+        <view class="weui-cell__bd">
+          <view class="address">{{item.provice_name}}{{item.city_name}}{{item.area_name}}{{item.address_details}}</view>
+          <view class="address-user"><text>{{item.shop_name}}</text> <text>{{item.shop_phone}}</text></view>
+        </view>
+        <view class="weui-cell__ft"><view style="color:#ccc;padding-left:20rpx;" data-id="{{item.id}}" catchtap="editAddress">编辑</view></view>
+      </view>
+    </view>
+
+    <view class="del" catchtap="deleteAddress" data-index="{{index}}" data-id="{{item.id}}">删除</view>
+
+  </view>
+
+
+  <!-- 添加地址 -->
+  <view class="addaddress">
+    <navigator class="add-btn" url="/pages/addAddress/addAddress">添加地址</navigator>
+  </view>
+
+</view>

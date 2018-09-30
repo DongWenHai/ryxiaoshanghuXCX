@@ -1,0 +1,28 @@
+<!-- 导航栏 -->
+<header title="支付详情" show_back="true"></header>
+<!-- ==========正常文档流=========== -->
+<view style="padding-top:{{headerHeight}}px;">
+  <view class="pay-result">
+    <view class="pr-icon">
+      <block wx:if="{{payStatus}}">
+      <icon type="success" color="#FFC26F" size="80"></icon>
+      </block>
+      <block wx:else>
+      <icon type="fail" color="red" size="80"></icon>
+      </block>
+    </view>
+    <view class="pr-status">
+      
+    支付成功
+
+    </view>
+    <view class="pr-code" wx:if="{{code}}">提货码：{{code}}</view>
+  </view>
+
+  <view class="pr-tips" wx:if="{{code}}">凭提货码提货</view>
+
+  <view class='btn-box'>
+    <navigator class="weui-btn" style="background:#FF9300" open-type='reLaunch' url="/pages/index/index">返回首页</navigator>
+    <navigator class="weui-btn" style="color:#FF9300;border:1px solid #FF9300;" open-type='redirect' url='/pages/order/order'>查看订单</navigator>
+  </view>
+</view>

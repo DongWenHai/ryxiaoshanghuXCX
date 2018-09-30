@@ -1,0 +1,30 @@
+page{height:100%;}
+.r_mt20{margin-top:20rpx;}
+.f16{font-size:16px;}
+.f15{font-size:15px;}
+.cl_b6{color:#666}
+.bg_white{background:#fff;}
+.ph{padding:0 15px;}
+.hasTabs{
+  height:50px;
+}
+.footerTabs{
+  width:100%;
+  height:50px;
+  background:#fff;
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:999;
+  background:#fff;
+}
+.t-btn{
+  width:100%;
+  height:44px;
+  line-height:44px;
+  text-align: center;
+  color:#fff;
+  background:#19D368;
+  margin:0 auto;
+  border-radius:22px;
+}

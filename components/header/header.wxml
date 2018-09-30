@@ -1,0 +1,14 @@
+<view class="header" style="background:{{background_color}}">
+  <view class="status" style="height:{{status_height}}px"></view>
+  <view class="header-nav" style="height:{{nav_height}}px;">
+    <view class="title-nav">{{title}}</view>
+    <block wx:if="{{!show_back}}">
+      <view class="userAvatarUrl" bindtap="_navgatorUser">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </block>
+    <block wx:if="{{show_back}}">
+      <view class="back-nav" hover-class='hover' bindtap="_navgatorBack"><image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACcElEQVR4Xu3bPYsUQRDG8X+hIoqgiYEGmhqZCmJgIr4cgsclRkbmxn4DY0MjAzHQQMEXFEVMxdBIwcTEjyCi8EjDHAzDuLMw3V3VOzfp3u7N8+uqneqbG2Phhy08P3sAexXQkICkE8AO8NnMPuU49WZaQNJ54DVwtAt+x8zuz0VoAkDSxS78oV7gH2Z2euMBuvBvgIODsF/N7MxGA6wI/xe4ambvNxZgIvwNM3s1N3x6f8jvAEmXgBcjZZ9WPlv4kABd+LS6BwYrnD18OIAV4f8A27nKvg8bpgUmwm+Z2bscPT/8jBAAkraAZyNln1a+WPgQLdCFfw7sH6xO8fDuAN7hXQEihHcDkLQNPPEqe9erQBf+KbDPo+ddrwLRwldtgRXhfwPXS13np2aHKnOApJvAo5GyT+GvmNnHqRMt9XpxgC7845GNl3v44i0QPXxRgBbCFwOQdAt4GLXsi84BLYXPXgGthc8K0GL4bACSbgMPWuj57KOwpFPA95GNzS/gmueQs87wNHsQknQZSDcuhsddM7u3zkl4/kwOgGPAN+D4IEiISW8KdzZA+gWSzgHpLs2R1hCyALSMkA2gVYSsAC0iZAdoDaEIQEsIxQBaQSgK0AJCcYDoCFUAIiNUA1gDweVP41UBJhCq3A3Ovh2e2myMvb5i71AdoXoF7IJEQXAD6LXDB+DwoFKqVYIrQIdwAXjrheAO4I0QAsATIQyAF0IoAA+EcAC1EUIC1EQIC7AGQvrPkjRDzDpCA0wgfDGzs7PSR31eYBhK0tiw9NPMTi4CoFcJLxf51FhvA7Xc5wbnlvr/3h/+S7BU8N3PXTzAP9P7TVAjj3QOAAAAAElFTkSuQmCC"></image></view>
+    </block>
+  </view>
+</view>

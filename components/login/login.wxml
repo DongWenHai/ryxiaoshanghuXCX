@@ -1,0 +1,16 @@
+<view class="loginModel">
+  <view class="loginModelMask" bindtap="closeUpdateUserinfo"></view>
+  <view class="loginModelContainer">
+    <view class="modelTitle">
+      <slot name="title"></slot>
+    </view>
+    <view class="modelContent">
+      <!-- {{msg1}} -->
+      <slot name="msg"></slot>
+    </view>
+    <view class="modelBtnGroup">
+      <button class="modelConfirm" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确认</button>
+      <!-- <slot name="button"></slot> -->
+    </view>
+  </view>
+</view>

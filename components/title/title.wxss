@@ -1,0 +1,22 @@
+.c-title{
+  width:100%;
+  display:-webkit-flex;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding:10rpx 0;
+}
+.c-title-bar{
+  width:40rpx;
+  height:2rpx;
+  background:#ccc;
+  align-self: center;
+}
+.c-title-content{
+  padding:0 20rpx;
+  display:inline-block;
+  align-self: center;
+  color:#ccc;
+  font-size:24rpx;
+}

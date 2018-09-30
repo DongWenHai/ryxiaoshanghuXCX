@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "header": "/components/header/header",
+    "login": "/components/login/login",
+    "refresh-view": "/components/RefreshView/refresh-view",
+    "title": "/components/title/title"
+  }
+}
